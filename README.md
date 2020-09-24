@@ -2,9 +2,13 @@
  Práce k maturitě
 
 # About the project
- This project is made for my final school exam
+ This project is made for my final school exam.
+
 
 # Composer install
+    How to use composer
+    composer init
+
     Downloaded composer with command 
     composer reqire illuminate/database
 
@@ -17,3 +21,13 @@
           "classes"
         ]
     }
+
+# create MySQL Database with dump.sql
+
+# I used FREE bootstrap teamplate sign-app
+  To view the teamplate github directory go to : 
+  https://github.com/flatlogic/sing-app
+
+# Glyphicons font is used
+  To view the list go to : 
+  https://getbootstrap.com/docs/3.3/components/

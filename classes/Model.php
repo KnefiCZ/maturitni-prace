@@ -18,9 +18,8 @@
 
     $db->setAsGlobal();
     $db->bootEloquent();
-
+    //Hlavní model, ke kterému se pak pojí další ve složce ./classes
     class Model {
-    
     
     }
     
