@@ -1,9 +1,13 @@
 <?php require_once "classes/Model.php";?>
+<?php require_once "header.php";?>
 <?php 
 $title = filter_input(INPUT_POST, 'title');
 $description = filter_input(INPUT_POST, 'description');
-$datetime_from = filter_input(INPUT_POST, 'datetime_from');
+$datetime_from = filter_input(INPUT_POST, 'datetime_from'); //PHP formát date
+$SQLdatetime_from = date('Y-m-d H:i:s', strtotime($datetime_from)); //Přeformátování do MySQL formátu
 $datetime_to = filter_input(INPUT_POST, 'datetime_to');
+$SQLdatetime_to = date('Y-m-d H:i:s', strtotime($datetime_to));
+$submit = filter_input(INPUT_POST, 'submit');
 
     var_dump($title);
     var_dump($description);
@@ -41,6 +45,6 @@ $datetime_to = filter_input(INPUT_POST, 'datetime_to');
 </form>
     
 
-</body>
-</html>
+<? require_once "footer.php"?>
 
+ 
