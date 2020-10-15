@@ -26,7 +26,7 @@
 
 # I used FREE bootstrap teamplate sign-app
   To view the teamplate github directory go to : 
-  https://github.com/flatlogic/sing-app
+  https://github.com/StartBootstrap/startbootstrap-sb-admin-2
 
 # Glyphicons font is used
   To view the list go to : 

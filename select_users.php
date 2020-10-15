@@ -8,13 +8,17 @@
             <table class="table border">
             <thead>
             <tr>
-                <th>ID</th>
+                <th>ID uživatele</th>
                 <th>Jméno</th>
                 <th>Příjmení</th>
                 <th>Email</th>
                 <th>Heslo</th>
+                <th>Tel. číslo</th>
                 <th>Datum narození</th>
-                <th>Bydliště</th>
+                <th>Adresa</th>
+                <th>Město</th>
+                <th>ID role</th>
+            <!--<th>Vytvořen v:</th>-->
               </tr>
             </thead>
             <tbody>  
@@ -34,8 +38,12 @@
                 <td><?php echo $user->lastname;?></td>
                 <td><?php echo $user->email;?></td>
                 <td><?php echo $user->password;?></td>
+                <td><?php echo $user->phonenumber;?></td>
                 <td><?php echo $user->birthdate;?></td>
                 <td><?php echo $user->address;?></td>
+                <td><?php echo $user->city;?></td>
+                <td><?php echo $user->id_role;?></td>
+               <!-- <td><?php/*echo $user->created_at;*/?></td> -->
                 <?php
                       } ?>     
               </tr>            

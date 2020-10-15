@@ -20,6 +20,10 @@
     $db->bootEloquent();
     //Hlavní model, ke kterému se pak pojí další ve složce ./classes
     class Model {
-    
+        public static function getAll(int $id_tasklist = 1) {
+            if ($id_tasklist != 1) {
+                $where = 'WHERE id_tasklist = ' . $id_tasklist;
+            }
+        }
     }
     

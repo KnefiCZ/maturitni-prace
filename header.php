@@ -59,6 +59,18 @@
       <i class="fa fa-bars"></i>
       <span>Uživatelé</span></a>
       </li>
+  <!-- Nav Item - Roles -->
+  <li class="nav-item">
+    <a class="nav-link" href="select_roles.php">
+      <i class="fa fa-bars"></i>
+      <span>Role</span></a>
+      </li>
+  <!-- Nav Item - Users -->
+  <li class="nav-item">
+    <a class="nav-link" href="select_tasklists.php">
+      <i class="fa fa-bars"></i>
+      <span>Seznamy úkolů</span></a>
+      </li>
 
   <!-- Divider
   <hr class="sidebar-divider">

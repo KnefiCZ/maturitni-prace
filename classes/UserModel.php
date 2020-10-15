@@ -11,21 +11,29 @@
                 return $users;
             }
             //INSERT
-            public static function addUser($firstname, $lastname, $email, $password, $birthdate, $address) {
+            public static function addUser($firstname, $lastname, $email, $password, $phonenumber, $birthdate, $address, $city, $id_role) {
                 $inserted = DB::insert("INSERT INTO users 
                                     (firstname,
                                     lastname,
                                     email,
                                     password,
+                                    phonenumber,
                                     birthdate,
-                                    address)
+                                    address,
+                                    city,
+                                    id_role,
+                                    created_at)
                                      VALUES(
                                          '$firstname',
                                          '$lastname',
                                          '$email',
                                          '$password',
+                                         '$phonenumber',
                                          '$birthdate',
-                                         '$address');");
+                                         '$address',
+                                         '$city',
+                                         '$id_role',
+                                         NOW());");
         
                   return $inserted;
                 
