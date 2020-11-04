@@ -1,5 +1,5 @@
 <?php //Načtení všech knihoven z adresáře VENDOR
-    require_once "vendor/autoload.php";
+    require_once "../vendor/autoload.php";
 
     use Illuminate\Database\Capsule\Manager as DB;
 

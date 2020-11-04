@@ -1,4 +1,4 @@
-<?php //Načtení všech knihoven z adresáře VENDOR
+<?php //Načtení UserModel.php
     include_once "classes/UsersModel.php";
     class UserLogin {
         //SALT ADDED TO PASSWORDS
