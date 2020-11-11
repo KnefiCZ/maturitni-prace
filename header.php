@@ -176,15 +176,15 @@
       </form>
       <!-- Topbar Navbar -->
       <ul class="navbar-nav ml-auto">
-       <!-- Login -->
+       <!-- Login     -->
        <a href="login/user_login.php" class="btn btn-primary" type="button"> Přihlásit </a>
   
       <?php if (isset($login)) { ?>
-        <!-- Logout -->
+        <!--  Logout    -->
         <a href="login/user_logout.php" class="btn btn-primary" type="button"> Odhlásit </a>
       <?php   }
       ?>
-       
+        -->
     </nav>
     
     <!-- End of Topbar -->

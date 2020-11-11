@@ -42,7 +42,8 @@
                 <td><?php echo $user->birthdate;?></td>
                 <td><?php echo $user->address;?></td>
                 <td><?php echo $user->city;?></td>
-                <td><?php echo $user->id_role;?></td>
+                <td><?php  $role = UserModel::getRole();
+                           echo $user->id_role;?></td>
                <!-- <td><?php/*echo $user->created_at;*/?></td> -->
                 <?php
                       } ?>     

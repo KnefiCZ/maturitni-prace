@@ -41,17 +41,23 @@
                   return $inserted;
                 
             }
-            public static function authenticate($email, $password) {
+            public static function authenticate(string $email, string $password): bool {
+            $saltedPassword = crypt($password, self::SALT);
             $authenticate = DB::select("SELECT * FROM useres WHERE email LIKE $email AND password LIKE $saltedPassword");
-            return $authenticate;
+            
+            if ($authenticate !== FALSE) {
+                sesstion_start();
+                $_SESSION['loggedEMail'] = $email;
+                return TRUE;
+                }
+            return FALSE;
             }
             public static function getRole() {
                 $role=DB::select("SELECT *
-                                   FROM roles"
-                );
-                // if ($_SESSION['role'] == 'admin') {
-                    
-                // }
-            }
+            FROM roles"
+               );
+                //  if ($_SESSION['role'] == 'admin') {
+                //  }
+             }
     }
 ?>
