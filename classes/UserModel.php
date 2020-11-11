@@ -3,6 +3,8 @@
     use Illuminate\Database\Capsule\Manager as DB;
 
         class UserModel extends Model {
+            //SALT THAT IS ADDED TO PASSWORDS
+            const SALT = '$2a$09$anexamplestringforsalt$';
             //SELECT
             public static function getUsers() {
                 $users=DB::select("SELECT *
@@ -10,8 +12,6 @@
                 );
                 return $users;
             }
-            //SALT THAT IS ADDED TO PASSWORDS
-            const SALT = '$2a$09$anexamplestringforsalt$';
             //INSERT
             public static function addUser($firstname, $lastname, $email, $password, $phonenumber, $birthdate, $address, $city, $id_role) {
                 $saltedPassword = crypt($password, self::SALT);
@@ -41,5 +41,17 @@
                   return $inserted;
                 
             }
-        }
+            public static function authenticate($email, $password) {
+            $authenticate = DB::select("SELECT * FROM useres WHERE email LIKE $email AND password LIKE $saltedPassword");
+            return $authenticate;
+            }
+            public static function getRole() {
+                $role=DB::select("SELECT *
+                                   FROM roles"
+                );
+                // if ($_SESSION['role'] == 'admin') {
+                    
+                // }
+            }
+    }
 ?>
