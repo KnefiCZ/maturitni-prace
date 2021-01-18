@@ -1,0 +1,13 @@
+#login-obal {
+    position: relative;
+    align-content: center;
+    left: 50%;
+    margin: auto;
+}
+.login-form {
+    height: auto;
+    width: 50%;
+    position: relative;
+    align-content: center;
+    margin: auto;
+}

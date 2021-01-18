@@ -1,7 +1,10 @@
-<?php require_once "vendor" . DIRECTORY_SEPARATOR . "autoload.php";?>
 <?php require_once "header.php";?>
-    <!-- Page Heading -->
-      <h1 class="h3 mb-2 text-gray-800">Tabulka ROLÍ</h1>
+<?php 
+  $roleName = UserModel::getRole();
+  if(in_array($roleName, ['admin', 'submitter', 'implementer'])) {
+?>
+
+      <h1 class="h3 mb-2 text-gray-800">Tabulka SEZNAMŮ ÚKOLŮ</h1>
       <div class="card shadow mb-4">
             <div class="card-body">
               <div class="table-responsive">
@@ -15,29 +18,35 @@
             </thead>
             <tbody>  
                 <?php 
-                  try {
-                      $tasklists = TasklistModel::getTasklists();
-                  } catch (\Throwable $th) {
-                      echo "Nepovedl se SELECT ze seznamů!" . "<br>";
-                      $tasklists = array();
-                      var_dump($th);
-                  }           
+                try {
+                    $tasklists = TasklistModel::getTasklists();
+                } catch (\Throwable $th) {
+                    echo "Nepovedl se SELECT ze seznamů!" . "<br>";
+                    $tasklists = array();
+                    var_dump($th);
+                }           
                 ?>
             <?php  foreach ($tasklists as $tasklist) {
                 ?> <tr>
                 <td><?php echo $tasklist->id_tasklist;?></td>
-                <td><?php echo $tasklist->name;?></td>
+                <td><a href="#"><?php echo $tasklist->name;?></a></td>
                 <td><?php echo $tasklist->description;?></td>
-                <td><?php echo $tasklist->created_at;?></td>
+               <!-- <td><?php echo $tasklist->created_at;?></td> -->
                 <?php
-                      } ?>     
+            } ?>     
               </tr>            
             </tbody>
           </table>
+          <?php  $roleName = UserModel::getRole();
+                 if ($roleName == 'admin') {?>
           <form action="add_tasklist.php">
             <input class="btn btn-primary" type="submit" value="Přidat další do ROLÍ.">
           </form>
+          <?php } ?>
       </div>
       </div>
       </div>
+      <?php } else {
+         header("location:index.php");
+      } ?>
 <?php require_once "footer.php";?>

@@ -1,29 +1,32 @@
-<?php require_once "classes/Model.php";?>
 <?php require_once "header.php";?>
 <?php 
-$firstname = filter_input(INPUT_POST, 'firstname');
-$lastname = filter_input(INPUT_POST, 'lastname');
-$email = filter_input(INPUT_POST, 'email');
-$password = filter_input(INPUT_POST, 'password');
-$phonenumber = filter_input(INPUT_POST, 'phonenumber');;
-$birthdate = filter_input(INPUT_POST, 'birthdate');
-$SQLbirthdate = date('Y-m-d', strtotime($birthdate));
-$address = filter_input(INPUT_POST, 'address');
-$city = filter_input(INPUT_POST, 'city');
-$id_role = filter_input(INPUT_POST, 'id_role');
-$submit = filter_input(INPUT_POST, 'submit');
+  $roleName = UserModel::getRole();
+  if(in_array($roleName, ['admin'])) {
+?>
+<?php //PROC TO TED NEFUNGUJE FUNGOVALO TO FURT A TED NEEEEEEEEEEE!
+        $firstname = filter_input(INPUT_POST, 'firstname');
+        $lastname = filter_input(INPUT_POST, 'lastname');
+        $email = filter_input(INPUT_POST, 'email');
+        $password = filter_input(INPUT_POST, 'password');
+        $phonenumber = filter_input(INPUT_POST, 'phonenumber');;
+        $birthdate = filter_input(INPUT_POST, 'birthdate');
+        $SQLbirthdate = date('Y-m-d', strtotime($birthdate));
+        $address = filter_input(INPUT_POST, 'address');
+        $city = filter_input(INPUT_POST, 'city');
+        $id_role = filter_input(INPUT_POST, 'id_role');
+        $submit = filter_input(INPUT_POST, 'submit');
 
-    $message = "Stránka byla načtena...";
-    if(isset($submit)) {
-        $message = "Stránka byla načtena odesláním formuláře...";
-        $result = UserModel::addUser($firstname, $lastname, $email, $password, $phonenumber, $birthdate, $address, $city, $id_role);
-        if($result) {
-            $message .= "Tásk byl úspěšně přídán...";       
+        $message = "Stránka byla načtena...";
+        if(isset($submit)) {
+                $message = "Stránka byla načtena odesláním formuláře...";
+                $result = UserModel::addUser($firstname, $lastname, $email, $password, $phonenumber, $birthdate, $address, $city, $id_role);
+                if($result) {
+                        $message .= "Uživatel byl úspěšně přídán...";       
+                }
+                else {
+                        $message .= "Nebylo možné přidat!!";
         }
-        else {
-            $message .= "Nebylo možné přidat!!";
         }
-    }
 
 ?>
 
@@ -51,18 +54,19 @@ $submit = filter_input(INPUT_POST, 'submit');
                             <?php 
                                     $roles = RoleModel::getRoles();
 
-                                    foreach ($roles as $role) { ?>
-                                        <option value="<?= $role->id_role?>"><?= $role->name?></option>
-                                    <?php }
+                            foreach ($roles as $role) { ?>
+                                        <option value="<?php echo $role->id_role?>"><?php echo $role->name?></option>
+                            <?php }
                             
                             ?>
             </select> <br>        
     <input type="submit" name="submit" id="submit"> 
     <?php echo $message;?>
 
-</form>
-    
-
+</form> 
+<?php } else {
+         header("location:index.php");
+      } ?>
 <? require_once "footer.php"?>
 
  

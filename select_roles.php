@@ -1,6 +1,9 @@
-<?php require_once "vendor" . DIRECTORY_SEPARATOR . "autoload.php";?>
 <?php require_once "header.php";?>
-    <!-- Page Heading -->
+<?php 
+  $roleName = UserModel::getRole();
+  if(in_array($roleName, ['admin'])) {
+?>
+
       <h1 class="h3 mb-2 text-gray-800">Tabulka ROLÍ</h1>
       <div class="card shadow mb-4">
             <div class="card-body">
@@ -15,13 +18,13 @@
             </thead>
             <tbody>  
                 <?php 
-                  try {
-                      $roles = RoleModel::getRoles();
-                  } catch (\Throwable $th) {
-                      echo "Nepovedl se SELECT z roles!" . "<br>";
-                      $roles = array();
-                      var_dump($th);
-                  }           
+                try {
+                    $roles = RoleModel::getRoles();
+                } catch (\Throwable $th) {
+                    echo "Nepovedl se SELECT z roles!" . "<br>";
+                    $roles = array();
+                    var_dump($th);
+                }           
                 ?>
             <?php  foreach ($roles as $role) {
                 ?> <tr>
@@ -29,7 +32,7 @@
                 <td><?php echo $role->name;?></td>
                 <td><?php echo $role->description;?></td>
                 <?php
-                      } ?>     
+            } ?>     
               </tr>            
             </tbody>
           </table>
@@ -39,4 +42,7 @@
       </div>
       </div>
       </div>
+      <?php } else {
+         header("location:index.php");
+      } ?>
 <?php require_once "footer.php";?>

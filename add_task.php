@@ -1,5 +1,8 @@
-<?php require_once "classes/Model.php";?>
 <?php require_once "header.php";?>
+<?php 
+  $roleName = UserModel::getRole();
+  if(in_array($roleName, ['admin', 'implementer', 'submitter'])) {
+?>
 <?php 
 $title = filter_input(INPUT_POST, 'title');
 $description = filter_input(INPUT_POST, 'description');
@@ -10,16 +13,16 @@ $SQLdatetime_to = date('Y-m-d H:i:s', strtotime($datetime_to));
 $submit = filter_input(INPUT_POST, 'submit');
 
     $message = "Stránka byla načtena...";
-    if(isset($submit)) {
-        $message = "Stránka byla načtena odesláním formuláře...";
-        $result = TaskModel::addTask($title, $description, $datetime_from, $datetime_to, $id_tasklist);
-        if($result) {
-            $message .= "Tásk byl úspěšně přídán...";       
-        }
-        else {
-            $message .= "Nebylo možné přidat!!";
-        }
+if(isset($submit)) {
+    $message = "Stránka byla načtena odesláním formuláře...";
+    $result = TaskModel::addTask($title, $description, $datetime_from, $datetime_to, $id_tasklist);
+    if($result) {
+        $message .= "Tásk byl úspěšně přídán...";       
     }
+    else {
+        $message .= "Nebylo možné přidat!!";
+    }
+}
 
 ?>
 
@@ -38,8 +41,9 @@ $submit = filter_input(INPUT_POST, 'submit');
     <?php echo $message;?> 
 
 </form>
-    
-
+<?php } else {
+         header("location:index.php");
+      } ?>
 <? require_once "footer.php"?>
 
  

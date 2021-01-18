@@ -1,11 +1,14 @@
-<?php require_once "classes/Model.php";?>
 <?php require_once "header.php";?>
 <?php 
-$name = filter_input(INPUT_POST, 'name');
-$description = filter_input(INPUT_POST, 'description');
-$submit = filter_input(INPUT_POST, 'submit');
+  $roleName = UserModel::getRole();
+  if(in_array($roleName, ['admin'])) {
+?>
+<?php 
+    $name = filter_input(INPUT_POST, 'name');
+    $description = filter_input(INPUT_POST, 'description');
+    $submit = filter_input(INPUT_POST, 'submit');
 
-    $message = "Stránka byla načtena...";
+        $message = "Stránka byla načtena...";
     if(isset($submit)) {
         $message = "Stránka byla načtena odesláním formuláře...";
         $result = RoleModel::addRole($name, $description);
@@ -30,8 +33,7 @@ $submit = filter_input(INPUT_POST, 'submit');
     <?php echo $message;?> 
 
 </form>
-    
-
+<?php } else {
+         header("location:index.php");
+      } ?>
 <? require_once "footer.php"?>
-
- 
