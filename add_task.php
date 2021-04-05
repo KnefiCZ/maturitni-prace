@@ -10,12 +10,13 @@ $datetime_from = filter_input(INPUT_POST, 'datetime_from'); //PHP formát date
 $SQLdatetime_from = date('Y-m-d H:i:s', strtotime($datetime_from)); //Přeformátování do MySQL formátu
 $datetime_to = filter_input(INPUT_POST, 'datetime_to');
 $SQLdatetime_to = date('Y-m-d H:i:s', strtotime($datetime_to));
+$idTasklist = filter_input(INPUT_POST, 'idTasklist');
 $submit = filter_input(INPUT_POST, 'submit');
 
     $message = "Stránka byla načtena...";
 if(isset($submit)) {
     $message = "Stránka byla načtena odesláním formuláře...";
-    $result = TaskModel::addTask($title, $description, $datetime_from, $datetime_to, $id_tasklist);
+    $result = TaskModel::addTask($title, $description, $datetime_from, $datetime_to, $idTasklist);
     if($result) {
         $message .= "Tásk byl úspěšně přídán...";       
     }
@@ -37,6 +38,17 @@ if(isset($submit)) {
             <input name="datetime_from" type="datetime-local"> <br>
     <label for="datetime_to">Dokončit úkol do:</label>
             <input name="datetime_to" type="datetime-local"> <br>
+    <label for="idTasklist">Kategorie tasklistu</label>
+    <select name="idTasklist" id="idTasklist">
+                            <?php 
+                                    $tasklists = TaskModel::getTasklists();
+
+                                    foreach ($tasklists as $tasklist) { ?>
+                                        <option value="<?= $tasklist->id_tasklist?>"><?= $tasklist->name?></option>
+                                    <?php }
+                            
+                            ?>
+            </select> <br> 
     <input type="submit" name="submit" id="submit"> 
     <?php echo $message;?> 
 

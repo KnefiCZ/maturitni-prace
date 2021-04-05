@@ -19,7 +19,7 @@
             <tbody>  
                 <?php 
                 try {
-                    $tasklists = TasklistModel::getTasklists();
+                    $tasklists = TaskModel::getTasklists();
                 } catch (\Throwable $th) {
                     echo "Nepovedl se SELECT ze seznamů!" . "<br>";
                     $tasklists = array();
@@ -27,9 +27,11 @@
                 }           
                 ?>
             <?php  foreach ($tasklists as $tasklist) {
+               
                 ?> <tr>
                 <td><?php echo $tasklist->id_tasklist;?></td>
-                <td><a href="#"><?php echo $tasklist->name;?></a></td>
+                <td><a href="tasklistDetail.php?id_tasklist=<?= $tasklist->id_tasklist ?>">
+                <?php echo $tasklist->name;?></a></td>
                 <td><?php echo $tasklist->description;?></td>
                <!-- <td><?php echo $tasklist->created_at;?></td> -->
                 <?php
@@ -40,7 +42,7 @@
           <?php  $roleName = UserModel::getRole();
                  if ($roleName == 'admin') {?>
           <form action="add_tasklist.php">
-            <input class="btn btn-primary" type="submit" value="Přidat další do ROLÍ.">
+            <input class="btn btn-primary" type="submit" value="Přidat další.">
           </form>
           <?php } ?>
       </div>

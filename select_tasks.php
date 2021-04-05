@@ -1,9 +1,6 @@
 <?php include_once "header.php";?>
 <?php
-  $TaskList = TasklistModel::getTasklist();
   $roleName = UserModel::getRole();
-  $idTasklist = filter_input(INPUT_POST, 'id_tasklist');
-  $tasks = TasksModel::getTasks($idTasklist);
   if(in_array($roleName, ['admin', 'submitter', 'implementer'])) {
 ?>
     <?php foreach ($tasklists as $tasklist) { ?>

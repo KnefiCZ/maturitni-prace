@@ -60,7 +60,7 @@ if(isset($submit)) {
                         <span class="focus-input100-2"></span>
                     </div>
                     <div class="container-login100-form-btn m-t-20">
-                        <input class="login100-form-btn" type="submit" name="submit" value="Odeslat">
+                        <input class="login100-form-btn" type="submit" name="submit" value="Přihlásit">
                     </div>
                     </div>
                     </form>
