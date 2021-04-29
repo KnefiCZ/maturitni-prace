@@ -78,7 +78,7 @@
       <span>Role</span></a>
       </li>
       <?php } ?>
-  <!-- Nav Item - Users -->
+  <!-- Nav Item - Tasks -->
   <li class="nav-item">
     <a class="nav-link" href="select_tasklists.php">
       <i class="fa fa-bars"></i>

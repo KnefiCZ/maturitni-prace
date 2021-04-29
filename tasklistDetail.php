@@ -6,8 +6,7 @@
   $roleName = UserModel::getRole();
   if(in_array($roleName, ['admin', 'submitter', 'implementer'])) {
 ?>
-  <?php foreach ($tasks as $task) { ?>
-    <h1 class="h3 mb-2 text-gray-800">Seznam úkolů: <?php echo $tasklist->name; ?> </h1>
+<h1 class="h3 mb-2 text-gray-800">Seznam úkolů: <?php echo $tasklist->name; ?> </h1>
       <div class="card shadow mb-4">
         <div class="card-body">
           <div class="table-responsive">
@@ -23,6 +22,7 @@
                 </tr>
               </thead>
               <tbody>  
+  <?php foreach ($tasks as $task) { ?>
               <tr>
                   <td><?php echo $task->id_task;?></td>
                   <td><a href="taskDetail.php?id_task=<?= $task->id_task ?>">
@@ -32,16 +32,20 @@
                   <td><?php echo $task->datetime_to;?></td>
                   <td><?php echo $task->id_tasklist;?></td>    
               </tr>            
-              </tbody>
-            </table>
-            <form action="add_task.php">
-              <input class="btn btn-primary" type="submit" value="Přidat další.">
-            </form>
-          </div>
-        </div>
-      </div>
   <?php      
     } ?>
+    </tbody>
+    </table>
+    
+    <form action="add_task.php">
+      <input class="btn btn-primary" type="submit" value="Přidat další.">
+      <a class="btn btn-primary" href="tasklistEdit.php?id_tasklist=<?= $idTasklist ?>">Úprava seznamu</a>
+      <a class="btn btn-primary" href="tasklistDelete.php?id_tasklist=<?= $idTasklist ?>">Smazání seznamu</a>
+    </form>
+    
+     </div>
+        </div>
+      </div>
       <?php } else {
          header("location:index.php");
       } ?>

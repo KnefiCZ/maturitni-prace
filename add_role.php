@@ -31,9 +31,9 @@
             <textarea rows="1" cols="25" name="description" id="description" placeholder="Popisek úkolu..."></textarea> <br>
     <input type="submit" name="submit" id="submit"> 
     <?php echo $message;?> 
-
+<hr>
 </form>
 <?php } else {
          header("location:index.php");
       } ?>
-<? require_once "footer.php"?>
+<? require_once "footer.php";?>

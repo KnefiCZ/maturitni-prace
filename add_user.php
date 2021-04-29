@@ -62,11 +62,11 @@
             </select> <br>        
     <input type="submit" name="submit" id="submit"> 
     <?php echo $message;?>
-
+<hr>
 </form> 
 <?php } else {
          header("location:index.php");
       } ?>
-<? require_once "footer.php"?>
+<? require_once "footer.php";?>
 
  

@@ -15,6 +15,11 @@ class UserModel extends Model
         );
         return $users;
     }
+    public static function getUser($idUser)
+    {
+        $user =DB::select("SELECT * FROM users WHERE id_user = $idUser");
+        return $user[0];
+    }
     //INSERT
     public static function addUser(
         $firstname,
@@ -62,6 +67,7 @@ class UserModel extends Model
         if (count($authenticate) > 0) {
                 //session_start();
                 $_SESSION['loggedEmail'] = $email;
+                $_SESSION['id_user'] = $authenticate[0]->id_user;
                 return true;
         }
                 return false;
@@ -86,5 +92,23 @@ class UserModel extends Model
                 
         }
                 return $roleName;
+    }
+    public static function updateUser($idUser, $firstname, $lastname, $email, $password, $phonenumber, $birthdate, $address, $city, $id_role)
+    {
+        $inserted = DB::update(
+            "UPDATE users SET
+                            firstname = '$firstname' , 
+                            lastname = '$lastname',
+                            email = '$email',
+                            password = '$password',
+                            phonenumber = '$phonenumber',
+                            birthdate = '$birthdate',
+                            address = '$address',
+                            city = '$city',
+                            id_role = '$id_role'
+
+            WHERE id_user = '$idUser';"               
+        );
+          return $inserted;
     }
 }

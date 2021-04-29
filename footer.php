@@ -1,5 +1,5 @@
   <!-- /.container-fluid -->
-
+  <hr>
   </div>
       <!-- End of Main Content -->
 

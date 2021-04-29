@@ -94,5 +94,53 @@ class TaskModel extends Model
         );
           return $inserted;
     }
+    public static function updateTasklist($idTasklist, $title, $description)
+    {
+        $inserted = DB::update(
+            "UPDATE tasks SET
+                            title = '$title' , 
+                            description = '$description',
+            WHERE id_tasklist = '$idTasklist';"               
+        );
+          return $inserted;
+    }
+    public static function addComment($content, $idTask, $idUser)
+    {
+        $inserted = DB::insert(
+            "INSERT INTO comment
+                                    (content,
+                                    task_id,
+                                    user_id,
+                                    created_at)
+                                     VALUES(
+                                         '$content',
+                                         '$idTask',
+                                         '$idUser',
+                                         now());"
+        );   
+          return $inserted;
+          
+    }
+    public static function getComments($idTask){
+        $comments = DB::select(
+            "SELECT u.firstname, u.lastname, c.content, c.created_at FROM comment c
+            JOIN users u
+            ON c.user_id = u.id_user
+            WHERE task_id = $idTask
+            ORDER BY created_at ASC;");
+        return $comments;
+    }
+    public static function deleteTask($idTask) {
+        $task = DB::delete(
+            "DELETE FROM tasks WHERE id_task = $idTask;"
+        );
+        return $task;
+    }
+    public static function deleteTasklist($idTasklist) {
+        $tasklist = DB::delete(
+            "DELETE FROM tasklists WHERE id_tasklist = $idTasklist;"
+        );
+        return $tasklist;
+    }
 }
 ?>

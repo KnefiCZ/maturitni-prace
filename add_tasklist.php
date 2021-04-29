@@ -11,7 +11,7 @@
     $message = "Stránka byla načtena...";
     if (isset($submit)) {
         $message = "Stránka byla načtena odesláním formuláře...";
-        $result = TasklistModel::addTasklist($name, $description);
+        $result = TaskModel::addTasklist($name, $description);
         if($result) {
             $message .= "Seznam úkolů byl úspěšně přídán...";
         }
@@ -31,11 +31,11 @@
             <textarea rows="1" cols="25" name="description" id="description" placeholder="..."></textarea> <br>
     <input type="submit" name="submit" id="submit"> 
     <?php echo $message;?> 
-
+<hr>
 </form>
 <?php } else {
          header("location:index.php");
       } ?>
-<? require_once "footer.php"?>
+<? require_once "footer.php";?>
 
  
