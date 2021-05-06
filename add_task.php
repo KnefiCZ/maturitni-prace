@@ -30,16 +30,16 @@ if(isset($submit)) {
 <h1>Přidání tasku...</h1>
 <form action="add_task.php" method="post">
 
-    <label for="title">Název:</label>
+    <label for="title" class="col-sm-2 col-form-label">Název:</label>
             <input type="text" name="title" placeholder="úkol..."> <br>
-    <label for="description">Popis:</label>
+    <label for="description" class="col-sm-2 col-form-label">Popis:</label>
             <textarea rows="1" cols="25" name="description" id="description" placeholder="Popisek úkolu..."></textarea> <br>
-    <label for="datetime_from">Dokončit úkol od:</label>
+    <label for="datetime_from" class="col-sm-2 col-form-label">Dokončit úkol od:</label>
             <input name="datetime_from" type="datetime-local"> <br>
-    <label for="datetime_to">Dokončit úkol do:</label>
+    <label for="datetime_to" class="col-sm-2 col-form-label">Dokončit úkol do:</label>
             <input name="datetime_to" type="datetime-local"> <br>
-    <label for="idTasklist">Kategorie tasklistu</label>
-    <select name="idTasklist" id="idTasklist">
+    <label for="idTasklist" class="col-sm-2 col-form-label">Kategorie tasklistu</label>
+    <select name="idTasklist" id="idTasklist" class="col-sm-2 col-form-label">
                             <?php 
                                     $tasklists = TaskModel::getTasklists();
 

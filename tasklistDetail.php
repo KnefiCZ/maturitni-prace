@@ -39,8 +39,12 @@
     
     <form action="add_task.php">
       <input class="btn btn-primary" type="submit" value="Přidat další.">
+      <?php // tato tabulka se zobrazí jen ADMINOVY! 
+        $roleName = UserModel::getRole();
+        if(in_array($roleName, ['admin', 'implementer'])) { ?> 
       <a class="btn btn-primary" href="tasklistEdit.php?id_tasklist=<?= $idTasklist ?>">Úprava seznamu</a>
       <a class="btn btn-primary" href="tasklistDelete.php?id_tasklist=<?= $idTasklist ?>">Smazání seznamu</a>
+      <?php } ?>
     </form>
     
      </div>

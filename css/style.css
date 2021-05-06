@@ -11,3 +11,6 @@
     align-content: center;
     margin: auto;
 }
+.margin-auto {
+    left: 50%;
+}

@@ -97,9 +97,9 @@ class TaskModel extends Model
     public static function updateTasklist($idTasklist, $title, $description)
     {
         $inserted = DB::update(
-            "UPDATE tasks SET
-                            title = '$title' , 
-                            description = '$description',
+            "UPDATE tasklists SET
+                            name = '$title' , 
+                            description = '$description'
             WHERE id_tasklist = '$idTasklist';"               
         );
           return $inserted;

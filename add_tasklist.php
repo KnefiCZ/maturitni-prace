@@ -25,9 +25,9 @@
 <h1>Přidání seznamu úkolů...</h1>
 <form action="add_tasklist.php" method="post">
 
-    <label for="title">Název:</label>
+    <label for="title" class="col-sm-2 col-form-label">Název:</label>
             <input type="text" name="name" placeholder="..."> <br>
-    <label for="description">Popis:</label>
+    <label for="description" class="col-sm-2 col-form-label">Popis:</label>
             <textarea rows="1" cols="25" name="description" id="description" placeholder="..."></textarea> <br>
     <input type="submit" name="submit" id="submit"> 
     <?php echo $message;?> 

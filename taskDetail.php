@@ -10,8 +10,12 @@
     <p>Úkol vypracovat do: <?= $task->datetime_to; ?></p>
     <p>Název a ID tasklistu: <?= $task->title; ?>, <?= $task->id_tasklist; ?></p>
       <!-- Only admin & realizator -->
-      <a class="btn btn-primary" href="taskEdit.php?id_task=<?= $idTask ?>">Edit úkolu</a>
+      <?php // tato tabulka se zobrazí jen ADMINOVY! 
+        $roleName = UserModel::getRole();
+        if(in_array($roleName, ['admin', 'implementer'])) { ?> 
+      <a class="btn btn-primary" href="taskEdit.php?id_task=<?= $idTask ?>">Úprava úkolu</a>
       <a class="btn btn-primary" href="taskDelete.php?id_task=<?= $idTask ?>">Smazání úkolu</a>
+      <?php } ?>
       <hr>
 <h2>Komentáře:</h2>
   <?php 
@@ -59,7 +63,7 @@
             <td> <?= $comment->created_at; ?> </td>
           </tr>
         <?php
-          }
+          } 
         ?>
       </tbody>
     </table>

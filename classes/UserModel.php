@@ -10,8 +10,8 @@ class UserModel extends Model
     public static function getUsers()
     {
         $users=DB::select(
-            "SELECT *
-                                   FROM users"
+            "SELECT * FROM users
+            ORDER BY id_user ASC;"
         );
         return $users;
     }
@@ -93,20 +93,19 @@ class UserModel extends Model
         }
                 return $roleName;
     }
-    public static function updateUser($idUser, $firstname, $lastname, $email, $password, $phonenumber, $birthdate, $address, $city, $id_role)
-    {
+    public static function updateUser($idUser, $firstname, $lastname, $email,/* $password,*/ $phonenumber, $birthdate, $address, $city, $id_role)
+    {   
+        //die($idUser);
         $inserted = DB::update(
             "UPDATE users SET
-                            firstname = '$firstname' , 
+                            firstname = '$firstname', 
                             lastname = '$lastname',
                             email = '$email',
-                            password = '$password',
                             phonenumber = '$phonenumber',
                             birthdate = '$birthdate',
                             address = '$address',
                             city = '$city',
                             id_role = '$id_role'
-
             WHERE id_user = '$idUser';"               
         );
           return $inserted;

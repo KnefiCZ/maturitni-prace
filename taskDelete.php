@@ -3,5 +3,5 @@
   $idTask = filter_input(INPUT_GET, 'id_task'); // z URL načtené ID
   $idTasklist = filter_input(INPUT_GET, 'id_tasklist');
   $task = TaskModel::deleteTask($idTask);
-  header("location:taklistDetail.php?");
+  header("location:tasklistDetail.php?id_tasklist=" . $idTasklist);
 ?>

@@ -32,24 +32,23 @@
 
 <h1>Přidání uživatele...</h1>
 <form action="add_user.php"method="post">
-
-    <label for="firstname">Jméno:</label>
+    <label for="firstname" class="col-sm-2 col-form-label">Jméno:</label>
             <input type="text" name="firstname"> <br>
-    <label for="lastname">Příjmení:</label>
+    <label for="lastname" class="col-sm-2 col-form-label">Příjmení:</label>
             <input type="text" name="lastname"> <br>
-    <label for="email">Email:</label>
+    <label for="email" class="col-sm-2 col-form-label">Email:</label>
             <input name="email" type="email" placeholder="xxxx@yyyy.xy"><br>
-    <label for="password">Heslo:</label>
+    <label for="password" class="col-sm-2 col-form-label">Heslo:</label>
             <input name="password" type="password" placeholder="********"><br>
-    <label for="phonenumber">Telefoní číslo:</label>
+    <label for="phonenumber" class="col-sm-2 col-form-label">Telefoní číslo:</label>
             <input name="phonenumber" type="number"><br>
-    <label for="birthdate">Datum narození:</label>
+    <label for="birthdate" class="col-sm-2 col-form-label">Datum narození:</label>
             <input name="birthdate" type="date"><br>
-    <label for="address">Adresa:</label>
+    <label for="address" class="col-sm-2 col-form-label">Adresa:</label>
             <input name="address" type="text" placeholder="..."><br>
-    <label for="city">Město:</label>
+    <label for="city" class="col-sm-2 col-form-label">Město:</label>
             <input name="city" type="text" placeholder="..."><br>
-    <label for="id_role">Role:</label>
+    <label for="id_role" class="col-sm-2 col-form-label">Role:</label>
     <select name="id_role" id="id_role">
                             <?php 
                                     $roles = RoleModel::getRoles();
